@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  /* Brutalist Palette */
+  --bg-color: #0a0a0a;
+  --text-color: #ffffff;
+  --accent-color: #ffffff;
+  --border-color: #333333;
+  --secondary-bg: #111111;
+
+  /* Typography */
+  --font-main: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.display-1 {
+  font-size: clamp(3.5rem, 12vw, 10rem);
+  letter-spacing: -0.04em;
+  font-weight: 900;
+}
+
+.lead {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* Layout & Grid */
+.border-grid {
+  border: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.border-bottom-grid {
+  border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.border-right-grid {
+  border-right: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.border-top-grid {
+  border-top: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.border-end-grid {
+  border-right: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+/* Components */
+.btn-brutal {
+  background: transparent;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border-radius: 0;
+  transition: all 0.2s ease;
+  font-weight: 700;
+}
+
+.btn-brutal:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+  transform: translate(-4px, -4px);
+  box-shadow: 4px 4px 0 var(--border-color);
+}
+
+.card-brutal {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.card-brutal:hover {
+  background: var(--secondary-bg);
+  border-color: var(--text-color);
+}
+
+/* Utilities */
+.text-outline {
+  -webkit-text-stroke: 1px var(--text-color);
+  color: transparent;
+}
+
+.bg-grid-pattern {
+  background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+  border-left: 1px solid var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border: 2px solid var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color);
+}
+
+/* Bootstrap Overrides */
+.container {
+  max-width: 1400px;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-color) !important;
+  padding: 1.5rem 0;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--text-color) !important;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
