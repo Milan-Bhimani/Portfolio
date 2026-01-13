@@ -1,59 +1,64 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { motion } from 'framer-motion';
+import { Code2, Database, Layout, Wrench } from 'lucide-react';
 
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Languages",
-      skills: ["JavaScript (ES6+)", "Python", "Java", "C++", "HTML5", "CSS3"]
+      title: "Backend Engineering",
+      icon: <Code2 size={20} />,
+      skills: ["Python", "FastAPI", "Node.js", "Express.js", "Django", "REST APIs"]
     },
     {
-      title: "Web Development",
-      skills: ["React.js", "Node.js", "Express.js"]
+      title: "Database & Cloud",
+      icon: <Database size={20} />,
+      skills: ["MongoDB", "PostgreSQL", "Firebase", "Redis", "AWS", "Docker"]
     },
     {
-      title: "Databases",
-      skills: ["MongoDB", "MySQL", "PostgreSQL"]
+      title: "Frontend Development",
+      icon: <Layout size={20} />,
+      skills: ["React", "JavaScript (ES6+)", "Tailwind", "HTML5/CSS3"]
     },
     {
-      title: "Tools & Others",
-      skills: ["Git & GitHub", "VS Code", "Postman", "Vercel", "REST APIs", "Agile"]
+      title: "DevOps & Tools",
+      icon: <Wrench size={20} />,
+      skills: ["Git/GitHub", "CI/CD", "Linux", "Nginx", "Jest", "Pytest"]
     }
   ];
 
   return (
-    <section id="skills" className="border-bottom-grid">
-      <Container fluid className="px-0">
-        <Row className="g-0">
-          <Col xs={12} className="p-5 border-bottom-grid">
-             <h2 className="display-3 fw-black text-uppercase mb-0">Skills &<br />Expertise</h2>
-          </Col>
-          
+    <section className="section-padding bg-dark bg-opacity-50">
+      <Container>
+        <div className="text-center mb-5">
+          <h2 className="display-5 fw-bold mb-3">Technical <span className="text-gradient">Arsenal</span></h2>
+          <p className="text-secondary lead">Tools I use to build production-grade software.</p>
+        </div>
+
+        <Row className="g-4">
           {skillCategories.map((category, index) => (
-            <Col md={6} lg={3} key={index} className="border-end-grid border-bottom-grid">
+            <Col md={6} lg={3} key={index}>
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="h-100 p-4"
+                transition={{ delay: index * 0.1 }}
+                className="glass-card p-4 h-100"
               >
-                <h3 className="h5 font-monospace text-uppercase mb-4 border-bottom border-secondary pb-2">
-                  // {category.title}
-                </h3>
-                <div className="d-flex flex-column gap-2">
-                  {category.skills.map((skill, idx) => (
-                    <motion.div 
-                      key={idx} 
-                      className="d-flex align-items-center"
-                      initial={{ x: -10, opacity: 0 }}
-                      whileInView={{ x: 0, opacity: 1 }}
-                      transition={{ delay: (index * 0.1) + (idx * 0.05) }}
+                <div className="d-flex align-items-center gap-2 mb-4 text-accent-primary">
+                  {category.icon}
+                  <h3 className="h6 fw-bold mb-0 text-white">{category.title}</h3>
+                </div>
+                
+                <div className="d-flex flex-wrap gap-2">
+                  {category.skills.map((skill, i) => (
+                    <span 
+                      key={i} 
+                      className="px-2 py-1 rounded bg-white bg-opacity-5 text-secondary small border border-white border-opacity-5 hover-white transition-colors"
+                      style={{ fontSize: '0.85rem' }}
                     >
-                      <span className="text-secondary me-2">0{idx + 1}</span>
-                      <span className="fw-bold text-uppercase">{skill}</span>
-                    </motion.div>
+                      {skill}
+                    </span>
                   ))}
                 </div>
               </motion.div>

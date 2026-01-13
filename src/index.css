@@ -1,156 +1,175 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Brutalist Palette */
-  --bg-color: #0a0a0a;
-  --text-color: #ffffff;
-  --accent-color: #ffffff;
-  --border-color: #333333;
-  --secondary-bg: #111111;
+  /* Modern Tech Palette */
+  --bg-primary: #030712;   /* Deepest Blue/Black */
+  --bg-secondary: #0f172a; /* Slate 900 */
+  --bg-tertiary: #1e293b;  /* Slate 800 */
+  
+  --text-primary: #f8fafc; /* Slate 50 */
+  --text-secondary: #94a3b8; /* Slate 400 */
+  
+  --accent-primary: #6366f1; /* Indigo 500 */
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  
+  --border-color: rgba(148, 163, 184, 0.1);
+  --border-hover: rgba(148, 163, 184, 0.2);
 
-  /* Typography */
+  /* Fonts */
   --font-main: 'Inter', sans-serif;
-  --font-mono: 'Space Mono', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--font-main);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Typography Overrides */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+/* Selection Color */
+::selection {
+  background: var(--accent-primary);
+  color: white;
 }
 
-.display-1 {
-  font-size: clamp(3.5rem, 12vw, 10rem);
-  letter-spacing: -0.04em;
-  font-weight: 900;
-}
-
-.lead {
-  font-family: var(--font-main);
-  font-size: 1.1rem;
-  letter-spacing: -0.01em;
-  font-weight: 300;
-  opacity: 0.8;
-}
-
-/* Layout & Grid */
-.border-grid {
-  border: 1px solid rgba(51, 51, 51, 0.5);
-}
-
-.border-bottom-grid {
-  border-bottom: 1px solid rgba(51, 51, 51, 0.5);
-}
-
-.border-right-grid {
-  border-right: 1px solid rgba(51, 51, 51, 0.5);
-}
-
-.border-top-grid {
-  border-top: 1px solid rgba(51, 51, 51, 0.5);
-}
-
-.border-end-grid {
-  border-right: 1px solid rgba(51, 51, 51, 0.5);
-}
-
-/* Components */
-.btn-brutal {
-  background: transparent;
-  border: 1px solid var(--text-color);
-  color: var(--text-color);
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  padding: 1rem 2rem;
-  border-radius: 0;
-  transition: all 0.2s ease;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
   font-weight: 700;
+  color: var(--text-primary);
 }
 
-.btn-brutal:hover {
-  background: var(--text-color);
-  color: var(--bg-color);
-  transform: translate(-4px, -4px);
-  box-shadow: 4px 4px 0 var(--border-color);
+.font-mono {
+  font-family: var(--font-mono);
 }
 
-.card-brutal {
-  background: transparent;
+.text-gradient {
+  background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-accent-gradient {
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Modern Button */
+.btn-modern {
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-color);
-  border-radius: 0;
+  color: var(--text-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-main);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-modern:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--text-secondary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary-glow {
+  background: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  color: white;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.btn-primary-glow:hover {
+  background: #4f46e5;
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
   transition: all 0.3s ease;
 }
 
-.card-brutal:hover {
-  background: var(--secondary-bg);
-  border-color: var(--text-color);
-}
-
-/* Utilities */
-.text-outline {
-  -webkit-text-stroke: 1px var(--text-color);
-  color: transparent;
-}
-
-.bg-grid-pattern {
-  background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-position: center top;
+.glass-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-color);
-  border-left: 1px solid var(--border-color);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border: 2px solid var(--bg-color);
+  background: var(--bg-tertiary);
+  border-radius: 5px;
+  border: 2px solid var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-color);
+  background: var(--text-secondary);
 }
 
-/* Bootstrap Overrides */
-.container {
-  max-width: 1400px;
+/* Utilities */
+.section-padding {
+  padding: 8rem 0;
 }
 
+.badge-modern {
+  background: rgba(99, 102, 241, 0.1);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}
+
+/* Navigation */
 .navbar {
+  background: rgba(3, 7, 18, 0.8) !important;
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border-color);
-  background: var(--bg-color) !important;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
 }
 
 .nav-link {
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  color: var(--text-color) !important;
+  color: var(--text-secondary) !important;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
 }
 
 .nav-link:hover {
-  text-decoration: underline;
+  color: white !important;
+}
+
+/* Background Gradients */
+.bg-glow-top {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
