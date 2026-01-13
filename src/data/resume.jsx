@@ -14,7 +14,7 @@ export const resumeData = {
     name: "Milan Bhimani",
     title: "Full Stack Engineer",
     email: "milanhbhimani@gmail.com",
-    location: "Vadodara, Gujarat, India",
+    location: "Ahmedabad, Gujarat, India",
     tagline: "Building scalable digital ecosystems.",
     social: {
       github: "https://github.com/Milan-Bhimani",
@@ -46,7 +46,7 @@ export const resumeData = {
       role: "Backend Architect",
       desc: "E-commerce backend platform with 99.9% uptime and sub-100ms response times.",
       tech: ["FastAPI", "Firebase", "Docker", "Python"],
-      link: "#",
+      link: "https://ecommerce-app-ashy-five.vercel.app/",
       github: "https://github.com/Milan-Bhimani/ShopEase",
       featured: true,
       category: "Backend"
@@ -56,7 +56,7 @@ export const resumeData = {
       role: "Full Stack Developer",
       desc: "Hyperlocal event discovery API handling 1000+ concurrent requests.",
       tech: ["Node.js", "Express", "MongoDB", "GeoJSON"],
-      link: "#",
+      link: "https://univents-dun.vercel.app/",
       github: "https://github.com/Milan-Bhimani/Univents",
       featured: true,
       category: "API"
@@ -81,17 +81,17 @@ export const resumeData = {
     { 
       category: "Database", 
       icon: <Database />, 
-      items: ["MongoDB", "PostgreSQL", "Firebase", "MySQL", "Redis"] 
+      items: ["MongoDB", "Firebase", "MySQL"] 
     },
     { 
       category: "DevOps", 
       icon: <Terminal />, 
-      items: ["Docker", "Git/GitHub", "CI/CD", "Linux", "Nginx"] 
+      items: ["Docker", "Git/GitHub", "CI/CD", "Linux"] 
     },
     { 
       category: "Frontend", 
       icon: <Layout />, 
-      items: ["React", "Tailwind CSS", "JavaScript (ES6+)", "HTML5/CSS3"] 
+      items: ["React", "JavaScript (ES6+)", "HTML5/CSS3"] 
     },
     { 
       category: "AI / ML", 
