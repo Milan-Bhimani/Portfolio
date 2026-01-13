@@ -1,102 +1,102 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Send, Mail, MapPin, Linkedin, Github } from 'lucide-react';
+import { Send, MapPin, Mail, Linkedin } from 'lucide-react';
+import { resumeData } from '../data/resume';
 
 const Contact = () => {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log(formState);
-  };
-
   return (
-    <section id="contact" className="section-padding">
-      <Container>
-        <Row className="justify-content-center">
-          <Col lg={10}>
-            <div className="glass-card overflow-hidden">
-              <Row className="g-0">
-                <Col md={5} className="bg-gradient-to-br from-indigo-900 to-slate-900 p-5 d-flex flex-column justify-content-between position-relative">
-                  <div className="position-absolute top-0 start-0 w-100 h-100 bg-noise opacity-10"></div>
-                  
-                  <div>
-                    <h3 className="h3 fw-bold mb-4">Let's Build Something<br />Amazing Together</h3>
-                    <p className="text-white text-opacity-75 mb-5">
-                      I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-                    </p>
-                  </div>
+    <section id="contact" className="py-32 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
 
-                  <div className="d-flex flex-column gap-4">
-                    <div className="d-flex align-items-center gap-3">
-                      <div className="p-2 rounded bg-white bg-opacity-10">
-                        <Mail size={20} />
-                      </div>
-                      <span className="small">milanhbhimani@gmail.com</span>
-                    </div>
-                    <div className="d-flex align-items-center gap-3">
-                      <div className="p-2 rounded bg-white bg-opacity-10">
-                        <MapPin size={20} />
-                      </div>
-                      <span className="small">Vadodara, Gujarat, India</span>
-                    </div>
-                  </div>
-                </Col>
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-5xl font-bold mb-8">
+              Let's Build Something <br />
+              <span className="text-gradient-accent">Amazing Together</span>
+            </h2>
+            <p className="text-xl text-gray-400 mb-12 leading-relaxed">
+              Whether you have a project in mind, need technical consultation, or just want to chat about the latest in tech, I'm always open to new conversations.
+            </p>
 
-                <Col md={7} className="p-5">
-                  <Form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                      <Form.Label className="small text-secondary fw-bold text-uppercase">Your Name</Form.Label>
-                      <Form.Control 
-                        type="text" 
-                        className="bg-dark border-secondary text-white py-2"
-                        style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)' }}
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    
-                    <div className="mb-4">
-                      <Form.Label className="small text-secondary fw-bold text-uppercase">Email Address</Form.Label>
-                      <Form.Control 
-                        type="email" 
-                        className="bg-dark border-secondary text-white py-2"
-                        style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)' }}
-                        placeholder="john@example.com"
-                      />
-                    </div>
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="p-4 rounded-full bg-white/5 text-primary">
+                  <Mail size={24} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-1">Email Me</h4>
+                  <a href={`mailto:${resumeData.personal.email}`} className="text-lg font-medium hover:text-primary transition-colors">
+                    {resumeData.personal.email}
+                  </a>
+                </div>
+              </div>
 
-                    <div className="mb-4">
-                      <Form.Label className="small text-secondary fw-bold text-uppercase">Message</Form.Label>
-                      <Form.Control 
-                        as="textarea" 
-                        rows={4} 
-                        className="bg-dark border-secondary text-white py-2"
-                        style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)' }}
-                        placeholder="Tell me about your project..."
-                      />
-                    </div>
-
-                    <motion.button 
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="btn-modern btn-primary-glow w-100 justify-content-center"
-                      type="submit"
-                    >
-                      Send Message <Send size={16} />
-                    </motion.button>
-                  </Form>
-                </Col>
-              </Row>
+              <div className="flex items-center gap-4">
+                <div className="p-4 rounded-full bg-white/5 text-primary">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-1">Location</h4>
+                  <p className="text-lg font-medium text-gray-300">
+                    {resumeData.personal.location}
+                  </p>
+                </div>
+              </div>
             </div>
-          </Col>
-        </Row>
-      </Container>
+          </motion.div>
+
+          <motion.form 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass p-10 rounded-3xl border border-white/10"
+          >
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Name</label>
+                <input 
+                  type="text" 
+                  className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
+                  placeholder="John Doe"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                <input 
+                  type="email" 
+                  className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
+                  placeholder="john@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                <textarea 
+                  rows={4}
+                  className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors resize-none"
+                  placeholder="Tell me about your project..."
+                />
+              </div>
+
+              <button 
+                type="submit"
+                className="w-full py-4 bg-primary hover:bg-indigo-600 text-white rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-primary/25 flex items-center justify-center gap-2"
+              >
+                Send Message <Send size={20} />
+              </button>
+            </div>
+          </motion.form>
+
+        </div>
+      </div>
     </section>
   );
 };

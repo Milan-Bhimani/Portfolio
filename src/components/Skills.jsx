@@ -1,71 +1,51 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 import { motion } from 'framer-motion';
-import { Code2, Database, Layout, Wrench } from 'lucide-react';
+import { resumeData } from '../data/resume';
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Backend Engineering",
-      icon: <Code2 size={20} />,
-      skills: ["Python", "FastAPI", "Node.js", "Express.js", "Django", "REST APIs"]
-    },
-    {
-      title: "Database & Cloud",
-      icon: <Database size={20} />,
-      skills: ["MongoDB", "PostgreSQL", "Firebase", "Redis", "AWS", "Docker"]
-    },
-    {
-      title: "Frontend Development",
-      icon: <Layout size={20} />,
-      skills: ["React", "JavaScript (ES6+)", "Tailwind", "HTML5/CSS3"]
-    },
-    {
-      title: "DevOps & Tools",
-      icon: <Wrench size={20} />,
-      skills: ["Git/GitHub", "CI/CD", "Linux", "Nginx", "Jest", "Pytest"]
-    }
-  ];
-
   return (
-    <section className="section-padding bg-dark bg-opacity-50">
-      <Container>
-        <div className="text-center mb-5">
-          <h2 className="display-5 fw-bold mb-3">Technical <span className="text-gradient">Arsenal</span></h2>
-          <p className="text-secondary lead">Tools I use to build production-grade software.</p>
+    <section id="skills" className="py-32 bg-black/20">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Technical <span className="text-gradient-accent">Arsenal</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            My expertise spans across the entire full-stack spectrum, from designing robust backend architectures to crafting intuitive user interfaces.
+          </p>
         </div>
 
-        <Row className="g-4">
-          {skillCategories.map((category, index) => (
-            <Col md={6} lg={3} key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass-card p-4 h-100"
-              >
-                <div className="d-flex align-items-center gap-2 mb-4 text-accent-primary">
-                  {category.icon}
-                  <h3 className="h6 fw-bold mb-0 text-white">{category.title}</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {resumeData.skills.map((skillGroup, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="glass p-8 rounded-2xl hover:bg-white/5 transition-colors"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                  {skillGroup.icon}
                 </div>
-                
-                <div className="d-flex flex-wrap gap-2">
-                  {category.skills.map((skill, i) => (
-                    <span 
-                      key={i} 
-                      className="px-2 py-1 rounded bg-white bg-opacity-5 text-secondary small border border-white border-opacity-5 hover-white transition-colors"
-                      style={{ fontSize: '0.85rem' }}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            </Col>
+                <h3 className="text-xl font-bold">{skillGroup.category}</h3>
+              </div>
+              
+              <div className="flex flex-wrap gap-2">
+                {skillGroup.items.map((item, i) => (
+                  <span 
+                    key={i}
+                    className="px-3 py-1.5 text-sm bg-background border border-white/10 rounded-lg text-gray-300 hover:text-white hover:border-primary/50 transition-colors cursor-default"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           ))}
-        </Row>
-      </Container>
+        </div>
+      </div>
     </section>
   );
 };
