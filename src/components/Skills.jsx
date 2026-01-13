@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { resumeData } from '../data/resume';
+import { resumeData } from '../data/resume.jsx';
 
 const Skills = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Send, MapPin, Mail, Linkedin } from 'lucide-react';
-import { resumeData } from '../data/resume';
+import { resumeData } from '../data/resume.jsx';
 
 const Contact = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
-import { resumeData } from '../data/resume';
+import { resumeData } from '../data/resume.jsx';
 
 const Hero = () => {
   return (

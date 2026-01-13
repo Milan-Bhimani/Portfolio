@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download } from 'lucide-react';
-import { resumeData } from '../data/resume';
+import { resumeData } from '../data/resume.jsx';
 
 const Layout = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
