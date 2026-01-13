@@ -37,6 +37,13 @@ export const resumeData = {
       year: "2022",
       grade: "75.84%",
       desc: "Science Stream"
+    },
+    {
+      degree: "Secondary School (Class X)",
+      school: "Shree Adarsh Secondary School",
+      year: "2020",
+      grade: "90.33%",
+      desc: "Gujarat Board"
     }
   ],
   experience: [], // Resume implies fresh grad/student, using projects as experience

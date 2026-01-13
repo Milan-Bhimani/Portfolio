@@ -17,13 +17,31 @@ const About = () => {
             <h2 className="text-4xl font-bold mb-8">
               About <span className="text-gradient-accent">Me</span>
             </h2>
-            <div className="prose prose-invert max-w-none text-gray-400 text-lg leading-relaxed">
+            <div className="prose prose-invert max-w-none text-gray-400 text-lg leading-relaxed mb-12">
               <p className="mb-6">
                 {resumeData.summary}
               </p>
               <p>
                 My journey involves architecting scalable RESTful APIs, optimizing database schemas, and exploring the intersection of AI and software engineering. I focus on writing clean, maintainable code that solves real-world problems.
               </p>
+            </div>
+
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Award className="text-primary" /> Certifications
+              </h3>
+              <div className="glass p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm">
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-4 text-gray-300">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
+                    <span className="text-lg">Computer Networks and Internet Protocol - NPTEL</span>
+                  </li>
+                  <li className="flex items-start gap-4 text-gray-300">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
+                    <span className="text-lg">Java Programming and Python Fundamentals - Infosys Springboard</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </motion.div>
 
@@ -50,24 +68,6 @@ const About = () => {
                     <p className="text-sm text-gray-500 font-mono">{edu.grade}</p>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                <Award className="text-primary" /> Certifications
-              </h3>
-              <div className="glass p-6 rounded-xl border border-white/5">
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-gray-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5" />
-                    Computer Networks and Internet Protocol - NPTEL
-                  </li>
-                  <li className="flex items-start gap-3 text-gray-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5" />
-                    Java Programming and Python Fundamentals - Infosys Springboard
-                  </li>
-                </ul>
               </div>
             </div>
           </motion.div>
