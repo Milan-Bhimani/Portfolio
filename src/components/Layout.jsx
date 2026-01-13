@@ -27,8 +27,8 @@ const Layout = ({ children }) => {
         }}
       >
         <Container>
-          <Navbar.Brand href="#" className="fw-bold font-mono text-white">
-            MB<span style={{ color: 'var(--accent-primary)' }}>.</span>
+          <Navbar.Brand href="#" className="fw-bold font-mono text-white tracking-tight">
+            Milan Bhimani<span style={{ color: 'var(--accent-primary)' }}>.</span>
           </Navbar.Brand>
           
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
