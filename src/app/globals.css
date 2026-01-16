@@ -13,8 +13,9 @@
   
   --color-border: rgba(255, 255, 255, 0.08);
   
-  --font-serif: 'Italiana', serif;
-  --font-sans: 'Manrope', sans-serif;
+  /* Use CSS variables set by Next.js font loader */
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
 
   --animate-float: float 8s ease-in-out infinite;
   --animate-grain: grain 8s steps(10) infinite;
@@ -32,7 +33,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    cursor: none; /* Hide default cursor for custom one */
+    cursor: none;
   }
 
   h1, h2, h3, h4, h5, h6 {

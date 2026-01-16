@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+'use client';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowUpRight, Github } from 'lucide-react';
 import { resumeData } from '../data/resume.jsx';
 
@@ -55,7 +56,6 @@ const ProjectItem = ({ project, index }) => {
                 className="w-full h-full object-cover opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
             />
         ) : (
-            /* Mockup / Representation Fallback */
             <div className="absolute inset-0 flex items-center justify-center">
                 <h3 className="font-serif text-4xl text-white/10 group-hover:text-white/20 transition-colors duration-500 uppercase tracking-widest">
                     {project.title}
@@ -63,7 +63,6 @@ const ProjectItem = ({ project, index }) => {
             </div>
         )}
         
-        {/* Hover Action */}
         <a 
            href={project.link !== "#" ? project.link : project.github}
            target="_blank"

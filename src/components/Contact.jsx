@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Check, Loader2 } from 'lucide-react';
@@ -10,7 +11,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('submitting');
-    // Simulate submission or real Web3Forms call here (using existing logic)
+    
     const object = {
       access_key: "a56cf936-c822-41fe-805e-afc34b87ebac",
       ...formData,

@@ -1,7 +1,7 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { resumeData } from '../data/resume.jsx';
 
 const Hero = () => {
   return (
@@ -59,7 +59,7 @@ const Hero = () => {
              transition={{ duration: 1.2, delay: 0.2 }}
              className="relative aspect-[3/4] border border-white/10 rounded-full overflow-hidden"
            >
-             {/* Abstract Geometric Representation since we avoid generic stock photos */}
+             {/* Abstract Geometric Representation */}
              <div className="absolute inset-0 bg-gradient-to-b from-surface-light to-background opacity-80" />
              <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-full h-full border-[0.5px] border-white/5 rounded-full animate-[spin_20s_linear_infinite]" />

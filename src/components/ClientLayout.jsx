@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useMotionValue, useSpring } from 'framer-motion';
-import { Menu, X, Download } from 'lucide-react';
+'use client';
 
-const Layout = ({ children }) => {
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useSpring, useMotionValue } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+
+const ClientLayout = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
@@ -14,6 +16,7 @@ const Layout = ({ children }) => {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    // Only run on client
     const moveCursor = (e) => {
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
@@ -151,4 +154,4 @@ const FooterLink = ({ href, text }) => (
   </a>
 );
 
-export default Layout;
+export default ClientLayout;
