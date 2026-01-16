@@ -58,7 +58,7 @@ const About = () => {
         {/* Right Column: Timeline & Stats */}
         <div className="flex flex-col gap-20">
             {/* Skills Grid */}
-            <div>
+            <div id="skills" className="scroll-mt-32">
                 <h3 className="text-xs font-mono uppercase tracking-widest mb-8 border-b border-white/10 pb-4">Technical Arsenal</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                     {resumeData.skills.map((skillGroup, index) => (
