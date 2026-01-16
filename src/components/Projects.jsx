@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 import { resumeData } from '../data/resume.jsx';
 
 const Projects = () => {
@@ -100,14 +100,25 @@ const ProjectItem = ({ project, index }) => {
             ))}
         </ul>
 
-        <a 
-          href={project.link !== "#" ? project.link : project.github}
-          target="_blank"
-          rel="noreferrer" 
-          className="inline-flex items-center gap-3 text-sm uppercase tracking-widest hover:gap-6 transition-all duration-300"
-        >
-          Explore Project <ArrowUpRight className="w-4 h-4" />
-        </a>
+        <div className="flex items-center gap-6">
+            <a 
+              href={project.link !== "#" ? project.link : project.github}
+              target="_blank"
+              rel="noreferrer" 
+              className="inline-flex items-center gap-2 text-sm uppercase tracking-widest hover:text-primary transition-colors duration-300"
+            >
+              Explore Project <ArrowUpRight className="w-4 h-4" />
+            </a>
+            
+            <a 
+              href={project.github}
+              target="_blank"
+              rel="noreferrer" 
+              className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-foreground-muted hover:text-white transition-colors duration-300"
+            >
+              View Code <Github className="w-4 h-4" />
+            </a>
+        </div>
       </div>
     </motion.div>
   );
