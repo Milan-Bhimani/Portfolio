@@ -46,14 +46,22 @@ const ProjectItem = ({ project, index }) => {
     >
       {/* Project Visual/Card */}
       <div className="w-full lg:w-3/5 aspect-video bg-surface-light border border-white/5 rounded-sm overflow-hidden relative cursor-pointer group-hover:border-white/20 transition-colors duration-500">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
         
-        {/* Mockup / Representation */}
-        <div className="absolute inset-0 flex items-center justify-center">
-            <h3 className="font-serif text-4xl text-white/10 group-hover:text-white/20 transition-colors duration-500 uppercase tracking-widest">
-                {project.title}
-            </h3>
-        </div>
+        {project.image ? (
+            <img 
+                src={project.image} 
+                alt={project.title} 
+                className="w-full h-full object-cover opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
+            />
+        ) : (
+            /* Mockup / Representation Fallback */
+            <div className="absolute inset-0 flex items-center justify-center">
+                <h3 className="font-serif text-4xl text-white/10 group-hover:text-white/20 transition-colors duration-500 uppercase tracking-widest">
+                    {project.title}
+                </h3>
+            </div>
+        )}
         
         {/* Hover Action */}
         <a 

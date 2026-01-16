@@ -57,7 +57,8 @@ export const resumeData = {
       link: "https://ecommerce-app-ashy-five.vercel.app/",
       github: "https://github.com/Milan-Bhimani/ShopEase",
       featured: true,
-      category: "Backend"
+      category: "Backend",
+      image: "/images/projects/shopease.png"
     },
     {
       title: "Univents",
@@ -67,7 +68,8 @@ export const resumeData = {
       link: "https://univents-dun.vercel.app/",
       github: "https://github.com/Milan-Bhimani/Univents",
       featured: true,
-      category: "API"
+      category: "API",
+      image: "/images/projects/univents.png"
     },
     {
       title: "DSA Visualizer",
@@ -77,7 +79,8 @@ export const resumeData = {
       link: "https://dsa-visualizer-git-main-milans-projects-22ba0caf.vercel.app/",
       github: "https://github.com/Milan-Bhimani/DSA-Visualizer",
       featured: false,
-      category: "EdTech"
+      category: "EdTech",
+      image: "/images/projects/dsa.png"
     }
   ],
   skills: [

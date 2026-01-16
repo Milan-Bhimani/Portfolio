@@ -18,6 +18,21 @@ const About = () => {
                 The Engineer <br />
                 <span className="text-foreground-muted italic">& The Craftsman</span>
             </motion.h2>
+
+            {/* Profile Image with Premium Hover */}
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="relative aspect-square md:aspect-[4/5] mb-12 overflow-hidden rounded-sm group border border-white/5"
+            >
+                <img 
+                    src="/images/profile.jpg" 
+                    alt="Milan Bhimani" 
+                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-out transform group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40" />
+            </motion.div>
             
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
