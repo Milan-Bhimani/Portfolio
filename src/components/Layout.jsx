@@ -1,16 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValue, useSpring } from 'framer-motion';
 import { Menu, X, Download } from 'lucide-react';
-import { resumeData } from '../data/resume.jsx';
 
 const Layout = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Custom Cursor Logic
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const springConfig = { damping: 25, stiffness: 700 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const moveCursor = (e) => {
+      cursorX.set(e.clientX - 16);
+      cursorY.set(e.clientY - 16);
+    };
+    window.addEventListener('mousemove', moveCursor);
+    
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('mousemove', moveCursor);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const navLinks = [
@@ -21,102 +37,118 @@ const Layout = ({ children }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      {/* Background Ambience */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] animate-pulse delay-1000" />
-      </div>
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-background relative">
+      {/* Noise Texture */}
+      <div className="noise-bg"></div>
 
-      {/* Navbar */}
+      {/* Custom Cursor (Hidden on Touch Devices) */}
+      <motion.div 
+        className="fixed top-0 left-0 w-8 h-8 border border-primary/50 rounded-full pointer-events-none z-[9999] hidden md:block"
+        style={{ x: cursorXSpring, y: cursorYSpring }}
+      />
+      <motion.div 
+        className="fixed top-0 left-0 w-2 h-2 bg-primary rounded-full pointer-events-none z-[9999] hidden md:block"
+        style={{ x: cursorX, y: cursorY, translateX: 12, translateY: 12 }}
+      />
+
+      {/* Navigation */}
       <nav 
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? 'glass py-4 shadow-lg' : 'bg-transparent py-6'
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ease-out ${
+          isScrolled ? 'py-4 bg-background/80 backdrop-blur-md border-b border-white/5' : 'py-8 bg-transparent'
         }`}
       >
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          <a href="#" className="text-2xl font-bold tracking-tighter hover:text-primary transition-colors">
-            Milan Bhimani<span className="text-primary text-4xl leading-none">.</span>
+        <div className="container-wide flex justify-between items-center">
+          <a href="#" className="relative group z-50">
+            <span className="font-serif text-2xl tracking-wider group-hover:text-primary transition-colors duration-300">
+              Milan<span className="text-primary">.</span>
+            </span>
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-12">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors uppercase tracking-widest"
+                className="text-sm font-medium tracking-widest uppercase hover:text-primary transition-colors duration-300 relative group"
               >
                 {link.name}
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
             <a 
               href="/resume/Milan_Resume.pdf" 
               target="_blank"
-              className="flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 rounded-full hover:bg-primary hover:border-primary transition-all duration-300 group"
+              className="px-6 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black hover:border-white transition-all duration-300"
             >
-              <span className="text-sm font-medium">Resume</span>
-              <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
+              Resume
             </a>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Toggle */}
           <button 
-            className="md:hidden text-white"
+            className="md:hidden z-50 text-foreground hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="absolute top-full left-0 w-full glass border-t border-white/10 md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-background z-40 flex flex-col items-center justify-center gap-8 md:hidden"
             >
-              <div className="flex flex-col p-6 gap-4">
-                {navLinks.map((link) => (
-                  <a 
-                    key={link.name} 
-                    href={link.href}
-                    className="text-lg font-medium text-gray-300 hover:text-white"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
-                ))}
+              {navLinks.map((link) => (
                 <a 
-                  href="/resume/Milan_Resume.pdf" 
-                  target="_blank"
-                  className="mt-4 flex justify-center items-center gap-2 w-full py-3 bg-primary rounded-lg font-medium"
+                  key={link.name} 
+                  href={link.href}
+                  className="font-serif text-4xl hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Download Resume <Download size={18} />
+                  {link.name}
                 </a>
-              </div>
+              ))}
+              <a 
+                href="/resume/Milan_Resume.pdf" 
+                target="_blank"
+                className="mt-8 px-8 py-3 border border-white/20 rounded-full uppercase tracking-widest"
+              >
+                Download Resume
+              </a>
             </motion.div>
           )}
         </AnimatePresence>
       </nav>
 
-      {/* Main Content */}
-      <main className="relative z-10 pt-20">
+      <main className="relative z-10">
         {children}
       </main>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-white/10 py-8 mt-20 bg-black/20 backdrop-blur-sm">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-400 font-mono text-sm">
-            &copy; {new Date().getFullYear()} Milan Bhimani. Built with React & Tailwind.
+      <footer className="py-12 border-t border-white/5 relative z-10">
+        <div className="container-wide flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-foreground-muted text-sm tracking-wide">
+            © {new Date().getFullYear()} Milan Bhimani. Crafted with precision.
           </p>
+          <div className="flex gap-6">
+            <FooterLink href="#" text="Github" />
+            <FooterLink href="#" text="LinkedIn" />
+            <FooterLink href="#" text="Email" />
+          </div>
         </div>
       </footer>
     </div>
   );
 };
+
+const FooterLink = ({ href, text }) => (
+  <a href={href} className="text-sm text-foreground-muted hover:text-primary transition-colors uppercase tracking-wider">
+    {text}
+  </a>
+);
 
 export default Layout;

@@ -1,71 +1,75 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { resumeData } from '../data/resume.jsx';
 
 const Hero = () => {
   return (
-    <section className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
-      <div className="container mx-auto px-6 text-center z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm">
-            <span className="text-primary font-mono text-sm tracking-wider">AVAILABLE FOR HIRE</span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight leading-tight">
-            Building the <br />
-            <span className="text-gradient-accent">Digital Future</span>
-          </h1>
-          
-          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            I'm <span className="text-white font-semibold">{resumeData.personal.name}</span>. 
-            {resumeData.personal.tagline}
-          </p>
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+      {/* Abstract Background Element */}
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-surface-light/50 rounded-full blur-[100px] pointer-events-none" />
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="#projects"
-              className="px-8 py-4 bg-primary hover:bg-indigo-600 text-white rounded-full font-medium transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] flex items-center gap-2"
-            >
-              View My Work <ArrowRight size={18} />
-            </a>
+      <div className="container-wide grid lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="block text-primary tracking-[0.2em] text-sm uppercase mb-6 pl-1 font-medium">
+              Software Engineer & Architect
+            </span>
             
-            <div className="flex items-center gap-4 px-6 py-3.5 glass rounded-full">
-              <SocialLink href={resumeData.personal.social.github} icon={<Github size={20} />} />
-              <SocialLink href={resumeData.personal.social.linkedin} icon={<Linkedin size={20} />} />
-              <SocialLink href={`mailto:${resumeData.personal.email}`} icon={<Mail size={20} />} />
-            </div>
-          </div>
-        </motion.div>
-      </div>
+            <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.9] mb-8 text-balance">
+              Building <br />
+              <span className="text-foreground-muted italic pr-4">Digital</span>
+              Realities
+            </h1>
+            
+            <p className="text-foreground-muted text-lg md:text-xl max-w-xl leading-relaxed mb-12 pl-1 border-l border-primary/30 pl-6">
+              I craft scalable, high-performance digital ecosystems. Merging technical depth with aesthetic precision to create software that feels human.
+            </p>
 
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Scroll</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
-      </motion.div>
+            <div className="flex flex-wrap gap-8 items-center pl-1">
+              <a 
+                href="#projects" 
+                className="group relative inline-flex items-center gap-3 text-lg font-medium tracking-wide overflow-hidden"
+              >
+                <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-2">View Selected Work</span>
+                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-foreground origin-right transform scale-x-100 transition-transform duration-300 group-hover:scale-x-0"></span>
+                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 text-primary" />
+              </a>
+              
+              <a 
+                href="#contact" 
+                className="text-foreground-muted hover:text-foreground transition-colors text-sm uppercase tracking-widest"
+              >
+                Start a Conversation
+              </a>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Decorative / Image Area */}
+        <div className="lg:col-span-4 relative hidden lg:block">
+           <motion.div 
+             initial={{ scale: 0.8, opacity: 0 }}
+             animate={{ scale: 1, opacity: 1 }}
+             transition={{ duration: 1.2, delay: 0.2 }}
+             className="relative aspect-[3/4] border border-white/10 rounded-full overflow-hidden"
+           >
+             {/* Abstract Geometric Representation since we avoid generic stock photos */}
+             <div className="absolute inset-0 bg-gradient-to-b from-surface-light to-background opacity-80" />
+             <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-full h-full border-[0.5px] border-white/5 rounded-full animate-[spin_20s_linear_infinite]" />
+                <div className="absolute w-[80%] h-[80%] border-[0.5px] border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+             </div>
+           </motion.div>
+        </div>
+      </div>
     </section>
   );
 };
-
-const SocialLink = ({ href, icon }) => (
-  <a 
-    href={href} 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="text-gray-400 hover:text-white transition-colors transform hover:scale-110"
-  >
-    {icon}
-  </a>
-);
 
 export default Hero;
