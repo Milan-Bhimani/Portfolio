@@ -49,6 +49,20 @@ const Contact = () => {
                 <div className="space-y-8">
                     <ContactDetail label="Location" value={resumeData.personal.location} />
                     <ContactDetail label="Email" value={resumeData.personal.email} href={`mailto:${resumeData.personal.email}`} />
+                    
+                    <div>
+                        <span className="text-xs font-mono uppercase tracking-widest text-foreground-muted mb-4 block">Scheduling</span>
+                        <a 
+                            href="https://cal.com/milan-nmvatl/" 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="group inline-flex items-center gap-4 px-6 py-3 border border-primary/20 rounded-full hover:bg-primary hover:text-black transition-all duration-300"
+                        >
+                            <span className="text-sm uppercase tracking-widest">Book a Meeting</span>
+                            <ArrowUpRight className="w-4 h-4" />
+                        </a>
+                    </div>
+
                     <div className="pt-8">
                         <span className="text-xs font-mono uppercase tracking-widest text-foreground-muted mb-4 block">Socials</span>
                         <div className="flex gap-6">
