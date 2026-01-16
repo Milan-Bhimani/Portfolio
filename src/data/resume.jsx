@@ -19,7 +19,8 @@ export const resumeData = {
     social: {
       github: "https://github.com/Milan-Bhimani",
       linkedin: "https://linkedin.com/in/bhimani-milan-h",
-      twitter: "#"
+      twitter: "#",
+      website: "https://milanhbhimani.me"
     }
   },
   summary: "Backend engineer specializing in scalable RESTful APIs with Python (FastAPI, Flask, Django) and JavaScript (Node.js, Express.js). Experienced in MongoDB, Firebase, MySQL, Docker, CI/CD, and Linux. Strong foundation in ML workflows and AI-driven applications with a focus on clean architecture and security-first development.",
