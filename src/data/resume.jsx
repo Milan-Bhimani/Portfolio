@@ -6,16 +6,18 @@ import {
   Layout, 
   Terminal, 
   Cpu, 
-  Globe 
+  Globe,
+  Shield
 } from 'lucide-react';
 
 export const resumeData = {
   personal: {
     name: "Milan Bhimani",
-    title: "Full Stack Engineer",
+    title: "Software Development Engineer Intern",
     email: "milanhbhimani@gmail.com",
+    phone: "+91 79844 54901",
     location: "Ahmedabad, Gujarat, India",
-    tagline: "Building scalable digital ecosystems.",
+    tagline: "Building secure, scalable digital ecosystems.",
     social: {
       github: "https://github.com/Milan-Bhimani",
       linkedin: "https://linkedin.com/in/bhimani-milan-h",
@@ -23,38 +25,32 @@ export const resumeData = {
       website: "https://milanhbhimani.me"
     }
   },
-  summary: "Backend engineer specializing in scalable RESTful APIs with Python (FastAPI, Flask, Django) and JavaScript (Node.js, Express.js). Experienced in MongoDB, Firebase, MySQL, Docker, CI/CD, and Linux. Strong foundation in ML workflows and AI-driven applications with a focus on clean architecture and security-first development.",
+  summary: "Final-year Computer Science undergraduate and Software Development Engineer Intern with demonstrated experience designing and shipping production-grade RESTful APIs using Python (FastAPI, Flask, Django) and JavaScript (Node.js, Express.js). Adept at building secure, maintainable backend systems with JWT authentication, RBAC, and OWASP-aligned security practices. Proven ability to contribute effectively in collaborative, mentor-reviewed engineering environments — from database schema design and API architecture to full-stack feature delivery on live platforms. Seeking a backend or full-stack software engineering role where technical depth and clean code matter.",
   education: [
     {
-      degree: "B.Tech in Computer Science",
+      degree: "Bachelor of Technology in Computer Science and Engineering",
       school: "Parul University",
       year: "2022 - 2026",
-      grade: "CGPA: 8.38/10.0",
-      desc: "Focus on Software Engineering and Data Science."
-    },
-    {
-      degree: "Higher Secondary (Class XII)",
-      school: "R.A.K.V.B School",
-      year: "2022",
-      grade: "75.84%",
-      desc: "Science Stream"
-    },
-    {
-      degree: "Secondary School (Class X)",
-      school: "Shree Adarsh Secondary School",
-      year: "2020",
-      grade: "90.33%",
-      desc: "Gujarat Board"
+      grade: "CGPA: 8.43/10.0",
+      desc: ""
     }
   ],
-  experience: [], // Resume implies fresh grad/student, using projects as experience
+  experience: [
+    {
+      role: "Software Development Engineer-1 Intern",
+      company: "Accrete Infosolutions",
+      location: "Vadodara, Gujarat, India",
+      period: "Jan. 2026 – Apr. 2026",
+      description: "Built RESTful APIs for a live e-commerce platform (Shop Sphere) using Node.js and Express.js, implementing MVC architecture with JWT-based authentication and Express-Validator for request validation. Designed MySQL database schema from scratch including seed data; built a unified API response utility standardizing success and error formats adopted across all backend endpoints project-wide. Contributed to shared production codebase via Git with multiple pull requests under senior mentor review, gaining hands-on experience in collaborative version control and professional code review workflows. Delivered React.js frontend features using Tailwind CSS and PrimeReact including Admin Dashboard, payment page, and profile page; performed manual integration testing across all interconnected modules."
+    }
+  ],
   projects: [
     {
       title: "ShopEase",
       role: "Backend Architect",
-      desc: "E-commerce backend platform with 99.9% uptime and sub-100ms response times.",
-      tech: ["FastAPI", "Firebase", "Docker", "Python"],
-      link: "https://ecommerce-app-ashy-five.vercel.app/",
+      desc: "Architected a production-grade REST API using FastAPI with clean architecture and dependency injection covering complete e-commerce flows: product management, cart, orders, and user lifecycle. Implemented JWT-based authentication with RBAC and Pydantic schema validation enforcing strict input sanitization across all endpoints; integrated Firebase for auth and file storage with secure access rules. Designed API security following OWASP fundamentals — preventing injection attacks, enforcing route-level authorization, and returning generic error messages to avoid sensitive data exposure.",
+      tech: ["FastAPI", "Firebase", "Python"],
+      link: "https://github.com/Milan-Bhimani/ShopEase",
       github: "https://github.com/Milan-Bhimani/ShopEase",
       featured: true,
       category: "Backend",
@@ -63,9 +59,9 @@ export const resumeData = {
     {
       title: "Univents",
       role: "Full Stack Developer",
-      desc: "Hyperlocal event discovery API handling 1000+ concurrent requests.",
-      tech: ["Node.js", "Express", "MongoDB", "GeoJSON"],
-      link: "https://univents-dun.vercel.app/",
+      desc: "Built a scalable REST API supporting geospatial location queries, advanced multi-field filtering, pagination, and full-text search using MongoDB aggregation pipelines with compound and geospatial indexing. Secured all endpoints with helmet.js security headers, express-rate-limit middleware, and NoSQL injection prevention following OWASP compliance practices.",
+      tech: ["Node.js", "Express.js", "MongoDB", "GeoJSON"],
+      link: "https://github.com/Milan-Bhimani/Univents",
       github: "https://github.com/Milan-Bhimani/Univents",
       featured: true,
       category: "API",
@@ -74,9 +70,9 @@ export const resumeData = {
     {
       title: "DSA Visualizer",
       role: "Frontend Engineer",
-      desc: "Interactive algorithm learning platform with real-time visualization.",
-      tech: ["Flask", "JavaScript", "Canvas API", "Algorithms"],
-      link: "https://dsa-visualizer-git-main-milans-projects-22ba0caf.vercel.app/",
+      desc: "Built an interactive web application visualizing 10+ sorting and searching algorithms with real-time step-by-step animations using custom JavaScript and HTML5 Canvas API. Implemented Flask REST endpoints with CORS configuration and async AJAX calls for smooth non-blocking algorithm execution; designed responsive UI with speed control and algorithm selection.",
+      tech: ["Python", "Flask", "JavaScript", "HTML5 Canvas"],
+      link: "https://github.com/Milan-Bhimani/DSA-Visualizer",
       github: "https://github.com/Milan-Bhimani/DSA-Visualizer",
       featured: false,
       category: "EdTech",
@@ -85,29 +81,34 @@ export const resumeData = {
   ],
   skills: [
     { 
+      category: "Languages", 
+      icon: <Code />, 
+      items: ["Python", "JavaScript (ES6+)", "SQL", "HTML5", "CSS3"] 
+    },
+    { 
       category: "Backend", 
       icon: <Server />, 
-      items: ["FastAPI", "Django", "Node.js", "Express", "REST APIs"] 
+      items: ["FastAPI", "Flask", "Django", "Node.js", "Express.js", "RESTful API Design"] 
     },
     { 
       category: "Database", 
       icon: <Database />, 
-      items: ["MongoDB", "Firebase", "MySQL"] 
-    },
-    { 
-      category: "DevOps", 
-      icon: <Terminal />, 
-      items: ["Docker", "Git/GitHub", "CI/CD", "Linux"] 
+      items: ["MySQL", "MongoDB", "Firebase"] 
     },
     { 
       category: "Frontend", 
       icon: <Layout />, 
-      items: ["React", "JavaScript (ES6+)", "HTML5/CSS3"] 
+      items: ["React.js", "Tailwind CSS", "PrimeReact"] 
     },
     { 
-      category: "AI / ML", 
-      icon: <Cpu />, 
-      items: ["Pandas", "NumPy", "Scikit-learn", "Matplotlib"] 
+      category: "Security", 
+      icon: <Shield />, 
+      items: ["JWT", "RBAC", "Input Validation", "Rate Limiting", "OWASP Top 10 Fundamentals"] 
+    },
+    { 
+      category: "Tools & Platforms", 
+      icon: <Terminal />, 
+      items: ["Git", "GitHub", "Postman", "VS Code", "Linux (Basics)"] 
     }
   ]
 };

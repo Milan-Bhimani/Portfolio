@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { resumeData } from '../data/resume.jsx';
 
 const Hero = () => {
   return (
@@ -17,15 +18,13 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="block text-primary tracking-[0.2em] text-sm uppercase mb-6 pl-1 font-medium">
-              Software Engineer & Architect
-            </span>
+<span className="block text-primary tracking-[0.2em] text-sm uppercase mb-6 pl-1 font-medium">
+  {resumeData.personal.title}
+</span>
             
-            <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.9] mb-8 text-balance">
-              Building <br />
-              <span className="text-foreground-muted italic pr-4">Digital</span>
-              Realities
-            </h1>
+<h1 className="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.9] mb-8 text-balance">
+  {resumeData.personal.tagline}
+</h1>
             
             <p className="text-foreground-muted text-lg md:text-xl max-w-xl leading-relaxed mb-12 pl-1 border-l border-primary/30 pl-6">
               I craft scalable, high-performance digital ecosystems. Merging technical depth with aesthetic precision to create software that feels human.

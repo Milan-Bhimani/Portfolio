@@ -50,6 +50,7 @@ const Contact = () => {
                 <div className="space-y-8">
                     <ContactDetail label="Location" value={resumeData.personal.location} />
                     <ContactDetail label="Email" value={resumeData.personal.email} href={`mailto:${resumeData.personal.email}`} />
+                    <ContactDetail label="Phone" value={resumeData.personal.phone} />
                     
                     <div>
                         <span className="text-xs font-mono uppercase tracking-widest text-foreground-muted mb-4 block">Scheduling</span>

@@ -7,9 +7,8 @@ const About = () => {
   return (
     <section id="about" className="py-32 relative overflow-hidden">
       <div className="container-wide grid lg:grid-cols-2 gap-20 items-start">
-        
-        {/* Left Column: Sticky Title & Bio */}
-        <div className="lg:sticky lg:top-32">
+        {/* Left Column: Image Only */}
+        <div>
             <motion.h2 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -34,7 +33,11 @@ const About = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40" />
             </motion.div>
-            
+        </div>
+
+        {/* Right Column: Summary, Experience & Education */}
+        <div className="flex flex-col gap-20">
+            {/* Summary */}
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -45,39 +48,29 @@ const About = () => {
                 <p className="mb-6">
                     {resumeData.summary}
                 </p>
-                <p>
-                    I believe that code is more than just instructions for a machine; it's the structure of modern human interaction. My approach combines rigorous backend architecture with a sensitivity to user experience.
-                </p>
             </motion.div>
 
-            {/* Signature / Decorative */}
-            <div className="mt-12 opacity-50 font-serif italic text-2xl text-primary">
-                Milan Bhimani
-            </div>
-        </div>
-
-        {/* Right Column: Timeline & Stats */}
-        <div className="flex flex-col gap-20">
-            {/* Skills Grid */}
-            <div id="skills" className="scroll-mt-32">
-                <h3 className="text-xs font-mono uppercase tracking-widest mb-8 border-b border-white/10 pb-4">Technical Arsenal</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-                    {resumeData.skills.map((skillGroup, index) => (
-                        <div key={index}>
-                            <h4 className="font-serif text-xl mb-4 text-white">{skillGroup.category}</h4>
-                            <ul className="space-y-2">
-                                {skillGroup.items.map((item, i) => (
-                                    <li key={i} className="text-foreground-muted text-sm border-l border-white/10 pl-4 hover:border-primary transition-colors duration-300">
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
+            {/* Experience and Details */}
+            <div>
+                <h3 className="text-xs font-mono uppercase tracking-widest mb-8 border-b border-white/10 pb-4">
+                    Experience and Details
+                </h3>
+                
+                {resumeData.experience.map((exp, index) => (
+                    <div key={index} className="mb-8">
+                        <h4 className="font-serif text-xl mb-2 text-white">{exp.role}</h4>
+                        <p className="text-foreground-muted text-sm mb-1">{exp.company}</p>
+                        <p className="text-foreground-muted text-sm mb-1">{exp.location} | {exp.period}</p>
+                        <p className="text-foreground-muted">{exp.description}</p>
+                    </div>
+                ))}
+                
+                <p className="mt-6">
+                    I believe that code is more than just instructions for a machine; it's the structure of modern human interaction. My approach combines rigorous backend architecture with a sensitivity to user experience.
+                </p>
             </div>
 
-            {/* Education Timeline */}
+            {/* Academic Background */}
             <div>
                 <h3 className="text-xs font-mono uppercase tracking-widest mb-8 border-b border-white/10 pb-4">Academic Background</h3>
                 <div className="space-y-12 border-l border-white/5 ml-2 pl-8 relative">
@@ -93,7 +86,6 @@ const About = () => {
                 </div>
             </div>
         </div>
-
       </div>
     </section>
   );
