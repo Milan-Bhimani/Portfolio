@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Cursor from '@/components/Cursor';
 import Preloader from '@/components/Preloader';
 
 export const metadata: Metadata = {
@@ -21,7 +20,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <Preloader />
-        <Cursor />
         {children}
       </body>
     </html>

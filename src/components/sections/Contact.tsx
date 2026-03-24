@@ -6,6 +6,7 @@ import { gsap } from '@/lib/gsap';
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  const formEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -35,9 +36,21 @@ export default function Contact() {
     setStatus('sending');
     const form = e.currentTarget;
     const data = new FormData(form);
-    // Replace with your actual form endpoint (Formspree, Resend, etc.)
+
+    if (!formEndpoint) {
+      const name = String(data.get('name') ?? '').trim();
+      const email = String(data.get('email') ?? '').trim();
+      const message = String(data.get('message') ?? '').trim();
+      const subject = encodeURIComponent(`Portfolio inquiry from ${name || 'Website Visitor'}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      window.location.href = `mailto:milanhbhimani@gmail.com?subject=${subject}&body=${body}`;
+      setStatus('done');
+      form.reset();
+      return;
+    }
+
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_ID', {
+      const res = await fetch(formEndpoint, {
         method: 'POST', body: data,
         headers: { Accept: 'application/json' },
       });

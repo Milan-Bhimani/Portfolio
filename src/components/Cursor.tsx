@@ -31,9 +31,9 @@ export default function Cursor() {
     const onUp = () => { dot.style.transform = 'translate(-50%,-50%) scale(1)'; };
 
     const onEnter = () => {
-      ring.style.width = '56px';
-      ring.style.height = '56px';
-      ring.style.background = 'rgba(184,150,106,0.08)';
+      ring.style.width = '44px';
+      ring.style.height = '44px';
+      ring.style.background = 'rgba(184,150,106,0.06)';
     };
     const onLeave = () => {
       ring.style.width = '36px';
