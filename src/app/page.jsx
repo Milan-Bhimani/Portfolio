@@ -1,20 +1,28 @@
 'use client';
 
-import ClientLayout from '../components/ClientLayout';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Projects from '../components/Projects';
-import Skills from '../components/Skills';
-import Contact from '../components/Contact';
+import { useLenis } from '@/hooks/useLenis';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/About';
+import Experience from '@/components/sections/Experience';
+import Projects from '@/components/sections/Projects';
+import Skills from '@/components/sections/Skills';
+import Contact from '@/components/sections/Contact';
+import Footer from '@/components/Footer';
 
 export default function Home() {
+  useLenis(); // smooth scroll initialized here
+
   return (
-    <ClientLayout>
+    <main>
+      <Navbar />
       <Hero />
       <About />
+      <Experience />
       <Projects />
       <Skills />
       <Contact />
-    </ClientLayout>
+      <Footer />
+    </main>
   );
 }
